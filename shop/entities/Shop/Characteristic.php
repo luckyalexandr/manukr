@@ -65,10 +65,12 @@ class Characteristic extends ActiveRecord
     {
         return [
             'name' => 'Наименование',
+            'name' => 'Наименование Uk',
             'type' => 'Тип',
             'sort' => 'Сортировка',
             'required' => 'Обязательно',
             'textVariants' => 'Варианты',
+            'textVariants' => 'Варианты Uk',
             'default' => 'По умолчанию',
         ];
     }
@@ -101,12 +103,14 @@ class Characteristic extends ActiveRecord
     public function afterFind(): void
     {
         $this->variants = Json::decode($this->getAttribute('variants_json'));
+        $this->variants_uk = Json::decode($this->getAttribute('variants_uk_json'));
         parent::afterFind();
     }
 
     public function beforeSave($insert): bool
     {
         $this->setAttribute('variants_json', Json::encode($this->variants));
+        $this->setAttribute('variants_uk_json', Json::encode($this->variants_uk));
         return parent::beforeSave($insert);
     }
 }

@@ -49,7 +49,7 @@ class ValueForm extends Model
 
     public function getCharacteristicName(): string
     {
-        return $this->_characteristic->name;
+        return Yii::$app->language == 'ru' ? $this->_characteristic->name : $this->_characteristic->name_uk;
     }
 
     public function getId(): int

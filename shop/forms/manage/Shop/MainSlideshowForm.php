@@ -16,7 +16,9 @@ use yii\web\UploadedFile;
 class MainSlideshowForm extends Model
 {
     public $title;
+    public $title_uk;
     public $text;
+    public $text_uk;
     public $link;
     public $sort;
 
@@ -31,7 +33,9 @@ class MainSlideshowForm extends Model
     {
         if ($slideshow) {
             $this->title = $slideshow->title;
+            $this->title = $slideshow->title_uk;
             $this->text = $slideshow->text;
+            $this->text = $slideshow->text_uk;
             $this->link = $slideshow->link;
             $this->sort = $slideshow->sort;
             $this->image = $slideshow->image;
@@ -44,7 +48,7 @@ class MainSlideshowForm extends Model
     {
         return [
             ['image', 'required', 'on' => 'create'],
-            [['text', 'title', 'link'], 'string', 'max' => 255],
+            [['text', 'title', 'text_uk', 'title_uk', 'link'], 'string', 'max' => 255],
             [['image'], 'image'],
             [['sort'], 'integer', 'min' => 1],
         ];
@@ -55,6 +59,8 @@ class MainSlideshowForm extends Model
         return [
             'title' => 'Наименование',
             'text' => 'Текст',
+            'title_uk' => 'Наименование Uk',
+            'text_uk' => 'Текст Uk',
             'image' => 'Изображение',
             'link' => 'Ссылка',
             'sort' => 'Сортировка'

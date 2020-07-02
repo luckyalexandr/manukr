@@ -24,6 +24,7 @@ class DeliveryMethodManageService
     {
         $method = DeliveryMethod::create(
             $form->name,
+            $form->name_uk,
             $form->cost,
             $form->sort
         );
@@ -36,6 +37,7 @@ class DeliveryMethodManageService
         $method = $this->methods->get($id);
         $method->edit(
             $form->name,
+            $form->name_uk,
             $form->cost,
             $form->sort
         );

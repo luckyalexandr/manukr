@@ -25,6 +25,7 @@ class TagManageService
     {
         $tag = Tag::create(
             $form->name,
+            $form->name_uk,
             $form->slug
         );
         $this->tags->save($tag);
@@ -36,6 +37,7 @@ class TagManageService
         $tag = $this->tags->get($id);
         $tag->edit(
             $form->name,
+            $form->name_uk,
             $form->slug
         );
         $this->tags->save($tag);

@@ -59,13 +59,18 @@ class ProductManageService
             $category->id,
             $form->code,
             $form->name,
+            $form->name_uk,
             $form->slug ? $form->slug : Inflector::slug($form->name . '-' . $form->code),
             $form->description,
+            $form->description_uk,
             $form->quantity->quantity,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
 
@@ -123,12 +128,17 @@ class ProductManageService
             $brand->id,
             $form->code,
             $form->name,
+            $form->name_uk,
             $form->slug ? $form->slug : Inflector::slug($form->name . '-' . $form->code),
             $form->description,
+            $form->description_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
 

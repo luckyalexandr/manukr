@@ -15,6 +15,7 @@ use yii\base\Model;
 class TagForm extends Model
 {
     public $name;
+    public $name_uk;
     public $slug;
 
     private $_tag;
@@ -23,6 +24,7 @@ class TagForm extends Model
     {
         if ($tag) {
             $this->name = $tag->name;
+            $this->name = $tag->name_uk;
             $this->slug = $tag->slug;
             $this->_tag = $tag;
         }
@@ -32,10 +34,10 @@ class TagForm extends Model
     public function rules(): array
     {
         return [
-            [['name', 'slug'], 'required'],
-            [['name', 'slug'], 'string', 'max' => 255],
+            [['name', 'name_uk', 'slug'], 'required'],
+            [['name', 'name_uk', 'slug'], 'string', 'max' => 255],
             ['slug', SlugValidator::class],
-            [['name', 'slug'], 'unique', 'targetClass' => Tag::class, 'filter' => $this->_tag ? ['<>', 'id', $this->_tag->id] : null]
+            [['name', 'name_uk', 'slug'], 'unique', 'targetClass' => Tag::class, 'filter' => $this->_tag ? ['<>', 'id', $this->_tag->id] : null]
         ];
     }
 
@@ -43,6 +45,7 @@ class TagForm extends Model
     {
         return [
             'name' => 'Имя',
+            'name_uk' => 'Имя Uk',
             'slug' => 'Транслит'
         ];
     }

@@ -33,8 +33,11 @@ class PostForm extends CompositeForm
         if ($post) {
             $this->categoryId = $post->category_id;
             $this->title = $post->title;
+            $this->title = $post->title_uk;
             $this->description = $post->description;
+            $this->description = $post->description_uk;
             $this->content = $post->content;
+            $this->content = $post->content_uk;
             $this->meta = new MetaForm($post->meta);
             $this->tags = new TagsForm($post);
         } else {
@@ -47,10 +50,10 @@ class PostForm extends CompositeForm
     public function rules(): array
     {
         return [
-            [['categoryId', 'title'], 'required'],
+            [['categoryId', 'title', 'title_uk'], 'required'],
             [['title'], 'string', 'max' => 255],
             [['categoryId'], 'integer'],
-            [['description', 'content'], 'string'],
+            [['description', 'content', 'description_uk', 'content_uk'], 'string'],
             [['photo'], 'image'],
         ];
     }
@@ -61,8 +64,11 @@ class PostForm extends CompositeForm
             'categoryId' => 'Категория',
             'description' => 'Описание',
             'title' => 'Заголовок',
+            'description_uk' => 'Описание Uk',
+            'title_uk' => 'Заголовок Uk',
             'photo' => 'Заглавное фото',
             'content' => 'Полный текст',
+            'content_uk' => 'Полный текст Uk',
         ];
     }
 

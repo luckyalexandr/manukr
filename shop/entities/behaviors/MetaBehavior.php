@@ -50,11 +50,11 @@ class MetaBehavior extends Behavior
         $model = $event->sender;
         $model->setAttribute($this->jsonAttribute, Json::encode([
             'title' => $model->{$this->attribute}->title,
-            'title' => $model->{$this->attribute}->title_uk,
+            'title_uk' => $model->{$this->attribute}->title_uk,
             'description' => $model->{$this->attribute}->description,
-            'description' => $model->{$this->attribute}->description_uk,
+            'description_uk' => $model->{$this->attribute}->description_uk,
             'keywords' => $model->{$this->attribute}->keywords,
-            'keywords' => $model->{$this->attribute}->keywords_uk,
+            'keywords_uk' => $model->{$this->attribute}->keywords_uk,
         ]));
     }
 }

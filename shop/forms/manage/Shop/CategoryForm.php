@@ -25,6 +25,10 @@ class CategoryForm extends CompositeForm
     public $slug;
     public $title;
     public $description;
+    public $name_uk;
+    public $slug_uk;
+    public $title_uk;
+    public $description_uk;
     public $parentId;
 
     private $_category;
@@ -33,9 +37,13 @@ class CategoryForm extends CompositeForm
     {
         if ($category) {
             $this->name = $category->name;
+            $this->name_uk = $category->name_uk;
             $this->slug = $category->slug;
+            $this->slug_uk = $category->slug_uk;
             $this->title = $category->title;
+            $this->title_uk = $category->title_uk;
             $this->description = $category->description;
+            $this->description_uk = $category->description_uk;
             $this->parentId = $category->parent ? $category->parent->id : null;
             $this->meta = new MetaForm($category->meta);
             $this->_category = $category;
@@ -48,12 +56,12 @@ class CategoryForm extends CompositeForm
     public function rules(): array
     {
         return [
-            [['name', 'slug'], 'required'],
+            [['name', 'slug', 'name_uk', 'slug_uk'], 'required'],
             [['parentId'], 'integer'],
-            [['name', 'slug', 'title'], 'string', 'max' => 255],
-            [['description'], 'string'],
+            [['name', 'slug', 'title', 'name_uk', 'slug_uk', 'title_uk'], 'string', 'max' => 255],
+            [['description', 'description_uk'], 'string'],
             ['slug', SlugValidator::class],
-            [['name', 'slug'], 'unique', 'targetClass' => Category::class, 'filter' => $this->_category ? ['<>', 'id', $this->_category->id] : null]
+            [['name', 'slug', 'name_uk', 'slug_uk'], 'unique', 'targetClass' => Category::class, 'filter' => $this->_category ? ['<>', 'id', $this->_category->id] : null]
         ];
     }
 
@@ -61,10 +69,14 @@ class CategoryForm extends CompositeForm
     {
         return [
             'name' => 'Наименование',
+            'name_uk' => 'Наименование UK',
             'parentId' => 'Родительская категория',
             'title' => 'Заголовок',
             'slug' => 'Транслит',
             'description' => 'Описание',
+            'title_uk' => 'Заголовок Uk',
+            'slug_uk' => 'Транслит Uk',
+            'description_uk' => 'Описание Uk',
         ];
     }
 

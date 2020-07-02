@@ -33,6 +33,9 @@ class ProductEditForm extends CompositeForm
     public $name;
     public $slug;
     public $description;
+    public $name_uk;
+    public $slug_uk;
+    public $description_uk;
 
     private $_product;
 
@@ -41,8 +44,11 @@ class ProductEditForm extends CompositeForm
         $this->brandId = $product->brand_id;
         $this->code = $product->code;
         $this->name = $product->name;
+        $this->name_uk = $product->name_uk;
         $this->slug = $product->slug;
+        $this->slug_uk = $product->slug_uk;
         $this->description = $product->description;
+        $this->description_uk = $product->description_uk;
         $this->meta = new MetaForm($product->meta);
         $this->categories = new CategoriesForm($product);
         $this->tags = new TagsForm($product);
@@ -56,12 +62,12 @@ class ProductEditForm extends CompositeForm
     public function rules(): array
     {
         return [
-            [['brandId', 'code', 'name'], 'required'],
+            [['brandId', 'code', 'name', 'name_uk'], 'required'],
             [['code', 'name', 'slug'], 'string', 'max' => 255],
             [['brandId'], 'integer'],
             ['slug', SlugValidator::class],
-            [['code', 'slug'], 'unique', 'targetClass' => Product::class, 'filter' => $this->_product ? ['<>', 'id', $this->_product->id] : null],
-            ['description', 'string'],
+            [['code', 'slug', 'slug_uk'], 'unique', 'targetClass' => Product::class, 'filter' => $this->_product ? ['<>', 'id', $this->_product->id] : null],
+            [['description', 'description_uk'], 'string'],
         ];
     }
 
@@ -73,6 +79,9 @@ class ProductEditForm extends CompositeForm
             'name' => 'Наименование',
             'slug' => 'URL',
             'description' => 'Описание',
+            'name_uk' => 'Наименование Uk',
+            'slug_uk' => 'URL Uk',
+            'description_uk' => 'Описание Uk',
         ];
     }
 

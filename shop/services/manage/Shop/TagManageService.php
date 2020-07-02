@@ -27,6 +27,7 @@ class TagManageService
     {
         $tag = Tag::create(
             $form->name,
+            $form->name_uk,
             $form->slug ? $form->slug : Inflector::slug($form->name)
         );
         $this->tags->save($tag);
@@ -38,6 +39,7 @@ class TagManageService
         $tag = $this->tags->get($id);
         $tag->edit(
             $form->name,
+            $form->name_uk,
             $form->slug ? $form->slug : Inflector::slug($form->name)
         );
         $this->tags->save($tag);

@@ -30,13 +30,20 @@ class CategoryManageService
         $parent = $this->categories->get($form->parentId);
         $category = Category::create(
             $form->name,
+            $form->name_uk,
             $form->slug,
+            $form->slug_uk,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         $category->appendTo($parent);
@@ -50,13 +57,20 @@ class CategoryManageService
         $this->assertIsNotRoot($category);
         $category->edit(
             $form->name,
+            $form->name_uk,
             $form->slug,
+            $form->slug_uk,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         if ($form->parentId !== $category->parent->id) {

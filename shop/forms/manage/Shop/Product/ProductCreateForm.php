@@ -36,6 +36,9 @@ class ProductCreateForm extends CompositeForm
     public $name;
     public $slug;
     public $description;
+    public $name_uk;
+    public $slug_uk;
+    public $description_uk;
 
     public function __construct($config = [])
     {
@@ -55,12 +58,12 @@ class ProductCreateForm extends CompositeForm
     public function rules(): array
     {
         return [
-            [['brandId', 'code', 'name'], 'required'],
-            [['code', 'name', 'slug'], 'string', 'max' => 255],
+            [['brandId', 'code', 'name', 'name_uk'], 'required'],
+            [['code', 'name', 'name_uk', 'slug', 'slug_uk'], 'string', 'max' => 255],
             [['brandId'], 'integer'],
             ['slug', SlugValidator::class],
-            [['code', 'slug'], 'unique', 'targetClass' => Product::class],
-            ['description', 'string'],
+            [['code', 'slug', 'slug_uk'], 'unique', 'targetClass' => Product::class],
+            [['description', 'description_uk'], 'string'],
         ];
     }
 
@@ -72,6 +75,9 @@ class ProductCreateForm extends CompositeForm
             'name' => 'Наименование',
             'slug' => 'URL',
             'description' => 'Описание',
+            'name_uk' => 'Наименованиеr Uk',
+            'slug_uk' => 'URLr Uk',
+            'description_uk' => 'Описаниеr Uk',
         ];
     }
 

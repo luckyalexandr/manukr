@@ -268,8 +268,11 @@ class Post extends ActiveRecord
             'category_id' => 'Категория',
             'description' => 'Описание',
             'title' => 'Заголовок',
+            'description' => 'Описание Uk',
+            'title' => 'Заголовок Uk',
             'photo' => 'Заглавное фото',
             'content' => 'Полный текст',
+            'content' => 'Полный текст Uk',
             'created_at' => 'Создан',
             'status' => 'Статус',
         ];

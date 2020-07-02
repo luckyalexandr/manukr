@@ -14,6 +14,7 @@ use yii\base\Model;
 class DeliveryMethodForm extends Model
 {
     public $name;
+    public $name_uk;
     public $cost;
     public $minWeight;
     public $maxWeight;
@@ -23,6 +24,7 @@ class DeliveryMethodForm extends Model
     {
         if ($method) {
             $this->name = $method->name;
+            $this->name = $method->name_uk;
             $this->cost = $method->cost;
             $this->minWeight = $method->min_weight;
             $this->maxWeight = $method->max_weight;
@@ -36,8 +38,8 @@ class DeliveryMethodForm extends Model
     public function rules(): array
     {
         return [
-            [['name', 'cost', 'sort'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'name_uk', 'cost', 'sort'], 'required'],
+            [['name', 'name_uk'], 'string', 'max' => 255],
             [['cost', 'minWeight', 'maxWeight', 'sort'], 'integer'],
         ];
     }

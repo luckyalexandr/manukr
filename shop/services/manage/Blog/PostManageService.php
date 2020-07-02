@@ -44,12 +44,18 @@ class PostManageService
         $post = Post::create(
             $category->id,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             $form->content,
+            $form->content_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
 
@@ -84,12 +90,18 @@ class PostManageService
         $post->edit(
             $category->id,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             $form->content,
+            $form->content_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
 

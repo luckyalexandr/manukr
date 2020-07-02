@@ -27,12 +27,18 @@ class PageManageService
         $parent = $this->pages->get($form->parentId);
         $page = Page::create(
             $form->title,
+            $form->title_uk,
             $form->slug,
+            $form->slug_uk,
             $form->content,
+            $form->content_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         $page->appendTo($parent);
@@ -46,12 +52,18 @@ class PageManageService
         $this->assertIsNotRoot($page);
         $page->edit(
             $form->title,
+            $form->title_uk,
             $form->slug,
+            $form->slug_uk,
             $form->content,
+            $form->content_uk,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         if ($form->parentId !== $page->parent->id) {

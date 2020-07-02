@@ -18,8 +18,8 @@ class ProductHelper
     public static function statusList(): array
     {
         return [
-            Product::STATUS_DRAFT => 'Draft',
-            Product::STATUS_ACTIVE => 'Active',
+            Product::STATUS_DRAFT => 'Черновик',
+            Product::STATUS_ACTIVE => 'Актив',
         ];
     }
 

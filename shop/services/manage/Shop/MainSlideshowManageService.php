@@ -26,7 +26,9 @@ class MainSlideshowManageService
     {
         $slideShow = MainSlideshow::create(
             $form->title,
+            $form->title_uk,
             $form->text,
+            $form->text_uk,
             $form->link,
             $form->sort,
             $form->image
@@ -41,7 +43,9 @@ class MainSlideshowManageService
         $slide = $this->slides->get($id);
         $slide->edit(
             $form->title,
+            $form->title_uk,
             $form->text,
+            $form->text_uk,
             $form->link,
             $form->sort,
             $form->image
