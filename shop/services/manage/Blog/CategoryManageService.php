@@ -29,14 +29,21 @@ class CategoryManageService
     {
         $category = Category::create(
             $form->name,
+            $form->name_uk,
             $form->slug,
+            $form->slug_uk,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             $form->sort,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         $this->categories->save($category);
@@ -48,14 +55,21 @@ class CategoryManageService
         $category = $this->categories->get($id);
         $category->edit(
             $form->name,
+            $form->name_uk,
             $form->slug,
+            $form->slug_uk,
             $form->title,
+            $form->title_uk,
             $form->description,
+            $form->description_uk,
             $form->sort,
             new Meta(
                 $form->meta->title,
+                $form->meta->title_uk,
                 $form->meta->description,
-                $form->meta->keywords
+                $form->meta->description_uk,
+                $form->meta->keywords,
+                $form->meta->keywords_uk
             )
         );
         $this->categories->save($category);

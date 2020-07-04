@@ -37,8 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'name',
+                    'name_uk',
                     'slug',
+                    'slug_uk',
                     'title',
+                    'title_uk',
                     'sort',
                     'created_at:datetime',
                     'updated_at:datetime',
@@ -56,6 +59,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'meta.title',
                     'meta.description',
                     'meta.keywords',
+                    'meta.title_uk',
+                    'meta.description_uk',
+                    'meta.keywords_uk',
                 ],
             ]) ?>
         </div>
