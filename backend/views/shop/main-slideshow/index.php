@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title; ?>
                         'format' => 'raw',
                     ],
                     'title',
+                    'title_uk',
                     'link',
                     'sort',
                     ['class' => ActionColumn::class],

@@ -8,7 +8,6 @@
 
 namespace shop\entities\Shop;
 
-
 use shop\forms\manage\Shop\MainSlideshowForm;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
@@ -77,7 +76,7 @@ class MainSlideshow extends ActiveRecord
     {
         return [
             [
-                'class' => ImageUploadBehavior::class,
+                'class' => ImageUploadBehavior::className(),
                 'attribute' => 'image',
                 'createThumbsOnRequest' => true,
                 'filePath' => '@webroot/origin/mainSlideShow/[[id]].[[extension]]',
@@ -86,7 +85,7 @@ class MainSlideshow extends ActiveRecord
                 'thumbUrl' => '@web/cache/mainSlideShow/[[profile]]_[[id]].[[extension]]',
                 'thumbs' => [
                     'small' => ['width' => 100, 'height' => 70],
-                    'main' => ['width' => 1920, 'height' => 560]
+                    'main_img' => ['width' => 1920, 'height' => 560],
                 ],
             ],
         ];

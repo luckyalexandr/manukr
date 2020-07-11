@@ -35,6 +35,7 @@ $sort = count(MainSlideshow::find()->all());
             </div>
             <div class="col-md-6">
                 <?= $form->field($model, 'title')->textInput() ?>
+                <?= $form->field($model, 'title_uk')->textInput() ?>
             </div>
             <div class="col-md-6">
                 <?= $form->field($model, 'link')->textInput() ?>
@@ -44,6 +45,7 @@ $sort = count(MainSlideshow::find()->all());
             </div>
             <div class="col-md-8">
                 <?= $form->field($model, 'text')->textarea(['rows' => 3]) ?>
+                <?= $form->field($model, 'text_uk')->textarea(['rows' => 3]) ?>
             </div>
         </div>
     </div>

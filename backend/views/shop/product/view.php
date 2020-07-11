@@ -67,6 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'code',
                             'name',
+                            'name_uk',
                             [
                                 'attribute' => 'category_id',
                                 'value' => ArrayHelper::getValue($product, 'category.name'),
@@ -136,39 +137,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="box-header with-border">Описание</div>
                 <div class="box-body">
                     <?= Yii::$app->formatter->asNtext($product->description) ?>
+                    <?= Yii::$app->formatter->asNtext($product->description_uk) ?>
                 </div>
             </div>
-
-<!--            <div class="box" id="modifications">-->
-<!--                <div class="box-header with-border">Модфикации</div>-->
-<!--                <div class="box-body">-->
-<!--                    <p>-->
-<!--                        <?//= Html::a('Добавить модификацию',
-//                            ['shop/modification/create', 'product_id' => $product->id],
-//                            ['class' => 'btn btn-success'])
-//                        ?>
-                   </p>-->
-<!--                    <?//= GridView::widget([
-//                        'dataProvider' => $modificationsProvider,
-//                        'columns' => [
-//                            'code',
-//                            'name',
-//                            [
-//                                'attribute' => 'price',
-//                                'value' => function (Modification $model) {
-//                                    return PriceHelper::format($model->price);
-//                                }
-//                            ],
-//                            'quantity',
-//                            [
-//                                'class' => ActionColumn::class,
-//                                'controller' => 'shop/modification',
-//                                'template' => '{update} {delete}',
-//                            ],
-//                        ],
-//                    ]); ?>
-               </div>-->
-<!--            </div>-->
 
             <div class="box">
                 <div class="box-header with-border">SEO</div>
@@ -193,13 +164,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
+            <div class="box">
+                <div class="box-header with-border">SEO uk</div>
+                <div class="box-body">
+                    <?= DetailView::widget([
+                        'model' => $product,
+                        'attributes' => [
+                            [
+                                'attribute' => 'meta.title_uk',
+                                'value' => $product->meta->title_uk,
+                            ],
+                            [
+                                'attribute' => 'meta.description_uk',
+                                'value' => $product->meta->description_uk,
+                            ],
+                            [
+                                'attribute' => 'meta.keywords_uk',
+                                'value' => $product->meta->keywords_uk,
+                            ],
+                        ],
+                    ]); ?>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-md-12">
             <div class="box" id="photos">
                 <div class="box-header with-border">Фотографии</div>
                 <div class="box-body">
-                    <p><b>Мин – 600х600, макс – 1200х1200.</b></p>
                     <div class="row">
                         <?php foreach ($product->photos as $photo): ?>                    <div class="col-md-2 col-xs-3" style="text-align: center">
                             <div class="btn-group">

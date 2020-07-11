@@ -46,12 +46,12 @@ class MetaForm extends Model
     public function attributeLabels(): array
     {
         return [
-            'title' => Yii::t('models', 'Заголовок'),
-            'description' => Yii::t('models', 'Описание'),
-            'keywords' => Yii::t('models', 'Ключевые слова'),
-            'title_uk' => Yii::t('models', 'Заголовок на украинском'),
-            'description_uk' => Yii::t('models', 'Описание на украинском'),
-            'keywords_uk' => Yii::t('models', 'Ключевые слова на украинском'),
+            'title' => 'Заголовок',
+            'description' => 'Описание',
+            'keywords' => 'Ключевые слова',
+            'title_uk' => 'Заголовок на украинском',
+            'description_uk' => 'Описание на украинском',
+            'keywords_uk' => 'Ключевые слова на украинском',
         ];
     }
 }

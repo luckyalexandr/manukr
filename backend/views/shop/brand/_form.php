@@ -30,6 +30,12 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model->meta, 'description')->textarea(['rows' => 2]) ?>
             <?= $form->field($model->meta, 'keywords')->textInput() ?>
         </div>
+        <div class="box-header with-border">SEO uk</div>
+        <div class="box-body">
+            <?= $form->field($model->meta, 'title_uk')->textInput() ?>
+            <?= $form->field($model->meta, 'description_uk')->textarea(['rows' => 2]) ?>
+            <?= $form->field($model->meta, 'keywords_uk')->textInput() ?>
+        </div>
     </div>
 
     <div class="form-group">

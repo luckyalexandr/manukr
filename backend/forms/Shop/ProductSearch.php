@@ -21,6 +21,7 @@ class ProductSearch extends Model
     public $id;
     public $code;
     public $name;
+    public $slug;
     public $category_id;
     public $brand_id;
     public $status;
@@ -29,7 +30,7 @@ class ProductSearch extends Model
     {
         return [
             [['id', 'category_id', 'brand_id', 'status'], 'integer'],
-            [['code', 'name'], 'safe'],
+            [['code', 'name', 'slug'], 'safe'],
         ];
     }
 
@@ -61,6 +62,7 @@ class ProductSearch extends Model
 
         $query
             ->andFilterWhere(['like', 'code', $this->code])
+            ->andFilterWhere(['like', 'slug', $this->code])
             ->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;

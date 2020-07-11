@@ -23,53 +23,87 @@ use yii\bootstrap\ActiveForm;
         'options' => ['enctype'=>'multipart/form-data']
     ]); ?>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-default">
-                <div class="box-header with-border">Общее</div>
-                <div class="box-body">
-                    <?= $form->field($model, 'categoryId')->dropDownList($model->categoriesList(), ['prompt' => '']) ?>
+    <div class="form-wrapper">
+        <div class="tabs">
+            <span class="tab">Рус</span>
+            <span class="tab">Укр</span>
+        </div>
+        <div class="tab_content">
+            <div class="tab_item">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box box-default">
+                            <div class="box-header with-border">Общее</div>
+                            <div class="box-body">
+                                <?= $form->field($model, 'categoryId')->dropDownList($model->categoriesList(), ['prompt' => '']) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box box-default">
+                            <div class="box-header with-border">Теги</div>
+                            <div class="box-body">
+                                <?= $form->field($model->tags, 'existing')->checkboxList($model->tags->tagsList()) ?>
+                                <?= $form->field($model->tags, 'textNew')->textInput() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box box-default">
+                    <div class="box-body">
+                        <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
+                        <?= $form->field($model, 'content')->widget(CKEditor::class, [
+                            'editorOptions' => ElFinder::ckeditorOptions(['elfinder', 'path' => '@webroot/ckedit']),
+                        ]) ?>
+                    </div>
+                </div>
+
+                <div class="box box-default">
+                    <div class="box-header with-border">Фото</div>
+                    <div class="box-body">
+                        <?= $form->field($model, 'photo')->label(false)->widget(FileInput::class, [
+                            'options' => [
+                                'accept' => 'image/*',
+                            ]
+                        ]) ?>
+                    </div>
+                </div>
+
+                <div class="box box-default">
+                    <div class="box-header with-border">SEO</div>
+                    <div class="box-body">
+                        <?= $form->field($model->meta, 'title')->textInput() ?>
+                        <?= $form->field($model->meta, 'description')->textarea(['rows' => 2]) ?>
+                        <?= $form->field($model->meta, 'keywords')->textInput() ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="box box-default">
-                <div class="box-header with-border">Теги</div>
-                <div class="box-body">
-                    <?= $form->field($model->tags, 'existing')->checkboxList($model->tags->tagsList()) ?>
-                    <?= $form->field($model->tags, 'textNew')->textInput() ?>
+
+            <div class="tab_item">
+
+                <div class="box box-default">
+                    <div class="box-header with-border">Общее uk</div>
+                    <div class="box-body">
+                        <?= $form->field($model, 'title_uk')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'description_uk')->textarea(['rows' => 3]) ?>
+                        <?= $form->field($model, 'content_uk')->widget(CKEditor::class, [
+                            'editorOptions' => ElFinder::ckeditorOptions(['elfinder', 'path' => '@webroot/ckedit']),
+                        ]) ?>
+                    </div>
+                </div>
+
+                <div class="box box-default">
+                    <div class="box-header with-border">SEO uk</div>
+                    <div class="box-body">
+                        <?= $form->field($model->meta, 'title_uk')->textInput() ?>
+                        <?= $form->field($model->meta, 'description_uk')->textarea(['rows' => 2]) ?>
+                        <?= $form->field($model->meta, 'keywords_uk')->textInput() ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="box box-default">
-        <div class="box-body">
-            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
-            <?= $form->field($model, 'content')->widget(CKEditor::className(), [
-                'editorOptions' => ElFinder::ckeditorOptions(['elfinder', 'path' => '@webroot/ckedit']),
-            ]) ?>
-        </div>
-    </div>
-
-    <div class="box box-default">
-        <div class="box-header with-border">Фото</div>
-        <div class="box-body">
-            <?= $form->field($model, 'photo')->label(false)->widget(FileInput::class, [
-                'options' => [
-                    'accept' => 'image/*',
-                ]
-            ]) ?>
-        </div>
-    </div>
-
-    <div class="box box-default">
-        <div class="box-header with-border">SEO</div>
-        <div class="box-body">
-            <?= $form->field($model->meta, 'title')->textInput() ?>
-            <?= $form->field($model->meta, 'description')->textarea(['rows' => 2]) ?>
-            <?= $form->field($model->meta, 'keywords')->textInput() ?>
         </div>
     </div>
 

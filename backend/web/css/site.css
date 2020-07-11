@@ -115,6 +115,15 @@ div.required label.control-label:after {
     margin: 5px auto;
 }
 
+.tab {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.form-wrapper .active {
+    background: green;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;
@@ -131,9 +140,4 @@ div.required label.control-label:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
-}
-
-.file-loading input[type="file"], input[type="file"].file-loading {
-    width: auto;
-    height: auto;
 }

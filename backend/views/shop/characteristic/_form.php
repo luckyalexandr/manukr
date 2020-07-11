@@ -16,14 +16,34 @@ use yii\widgets\ActiveForm;
 <div class="characteristic-form">
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="box box-default">
-        <div class="box-body">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'type')->dropDownList($model->typesList()) ?>
-            <?= $form->field($model, 'sort')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'required')->checkbox() ?>
-            <?= $form->field($model, 'default')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'textVariants')->textarea(['rows' => 6]) ?>
+    <div class="form-wrapper">
+        <div class="tabs">
+            <span class="tab">Рус</span>
+            <span class="tab">Укр</span>
+        </div>
+
+        <div class="tab_content">
+            <div class="tab_item">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'type')->dropDownList($model->typesList()) ?>
+                        <?= $form->field($model, 'sort')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'required')->checkbox() ?>
+                        <?= $form->field($model, 'default')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'textVariants')->textarea(['rows' => 6]) ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_item">
+                <div class="box box-default">
+                    <div class="box-body">
+                        <?= $form->field($model, 'name_uk')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'default_uk')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'textVariants_uk')->textarea(['rows' => 6]) ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -38,8 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'name',
+                    'name_uk',
                     'slug',
+                    'slug_uk',
                     'title',
+                    'title_uk',
                     'created_at:datetime',
                     'updated_at:datetime',
                 ],
@@ -58,6 +61,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'URI.SafeIframeRegexp'=>'%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
             ]) ?>
         </div>
+        <div class="box-header with-border">Описание ukr</div>
+        <div class="box-body">
+            <?= Yii::$app->formatter->asHtml($category->description_uk, [
+                'Attr.AllowedRel' => array('nofollow'),
+                'HTML.SafeObject' => true,
+                'Output.FlashCompat' => true,
+                'HTML.SafeIframe' => true,
+                'URI.SafeIframeRegexp'=>'%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
+            ]) ?>
+        </div>
     </div>
 
     <div class="box">
@@ -69,6 +82,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     'meta.title',
                     'meta.description',
                     'meta.keywords',
+                ],
+            ]) ?>
+        </div>
+        <div class="box-header with-border">SEO ukr</div>
+        <div class="box-body">
+            <?= DetailView::widget([
+                'model' => $category,
+                'attributes' => [
+                    'meta.title_uk',
+                    'meta.description_uk',
+                    'meta.keywords_uk',
                 ],
             ]) ?>
         </div>

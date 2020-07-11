@@ -58,9 +58,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                     ],
                     'title',
+                    'title_uk',
                     [
                         'attribute' => 'category_id',
                         'value' => ArrayHelper::getValue($post, 'category.name'),
+                    ],
+                    [
+                        'attribute' => 'category_id',
+                        'value' => ArrayHelper::getValue($post, 'category.name_uk'),
                     ],
                     [
                         'label' => 'Tags',
@@ -90,12 +95,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box-body">
             <?= Yii::$app->formatter->asNtext($post->description) ?>
         </div>
+        <div class="box-header with-border">Description uk</div>
+        <div class="box-body">
+            <?= Yii::$app->formatter->asNtext($post->description_uk) ?>
+        </div>
     </div>
 
     <div class="box">
         <div class="box-header with-border">Content</div>
         <div class="box-body">
             <?= Yii::$app->formatter->asNtext($post->content) ?>
+        </div>
+        <div class="box-header with-border">Content uk</div>
+        <div class="box-body">
+            <?= Yii::$app->formatter->asNtext($post->content_uk) ?>
         </div>
     </div>
 
@@ -116,6 +129,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'meta.keywords',
                         'value' => $post->meta->keywords,
+                    ],
+                ],
+            ]) ?>
+        </div>
+        <div class="box-header with-border">SEO uk</div>
+        <div class="box-body">
+            <?= DetailView::widget([
+                'model' => $post,
+                'attributes' => [
+                    [
+                        'attribute' => 'meta.title_uk',
+                        'value' => $post->meta->title_uk,
+                    ],
+                    [
+                        'attribute' => 'meta.description_uk',
+                        'value' => $post->meta->description_uk,
+                    ],
+                    [
+                        'attribute' => 'meta.keywords_uk',
+                        'value' => $post->meta->keywords_uk,
                     ],
                 ],
             ]) ?>

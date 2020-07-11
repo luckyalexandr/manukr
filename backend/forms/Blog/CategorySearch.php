@@ -18,15 +18,12 @@ class CategorySearch extends Model
     public $name;
     public $slug;
     public $title;
-    public $name_uk;
-    public $slug_uk;
-    public $title_uk;
 
     public function rules(): array
     {
         return [
             [['id'], 'integer'],
-            [['name', 'slug', 'title', 'name_uk', 'slug_uk', 'title_uk'], 'safe'],
+            [['name', 'slug', 'title'], 'safe'],
         ];
     }
 

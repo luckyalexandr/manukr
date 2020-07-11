@@ -38,6 +38,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                         'format' => 'raw',
                     ],
+                    [
+                        'attribute' => 'name_uk',
+                        'value' => function (Tag $model) {
+                            return Html::a(Html::encode($model->name_uk), ['view', 'id' => $model->id]);
+                        },
+                        'format' => 'raw',
+                    ],
                     'slug',
                     ['class' => ActionColumn::class],
                 ],

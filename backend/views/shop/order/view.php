@@ -49,6 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'customer_phone',
                     'customer_email',
                     'delivery_method_name',
+                    [
+                        'attribute' => 'payment_type',
+                        'value' => function($order){
+                return $order->payment_type ? 'На карту Ощадбанка' : 'Наложенный платеж';
+                        }
+                    ],
                     'deliveryData.address',
                     [
                         'attribute' => 'deliveryData.area',

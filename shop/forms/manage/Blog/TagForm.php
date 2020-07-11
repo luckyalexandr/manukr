@@ -10,6 +10,7 @@ namespace shop\forms\manage\Blog;
 
 use shop\entities\Blog\Tag;
 use shop\validators\SlugValidator;
+use Yii;
 use yii\base\Model;
 
 class TagForm extends Model
@@ -24,7 +25,7 @@ class TagForm extends Model
     {
         if ($tag) {
             $this->name = $tag->name;
-            $this->name = $tag->name_uk;
+            $this->name_uk = $tag->name_uk;
             $this->slug = $tag->slug;
             $this->_tag = $tag;
         }
@@ -44,9 +45,9 @@ class TagForm extends Model
     public function attributeLabels(): array
     {
         return [
-            'name' => 'Имя',
-            'name_uk' => 'Имя Uk',
-            'slug' => 'Транслит'
+            'name' => Yii::t('models', 'Имя'),
+            'name_uk' => Yii::t('models', 'Имя_uk'),
+            'slug' => Yii::t('models', 'Транслит')
         ];
     }
 }

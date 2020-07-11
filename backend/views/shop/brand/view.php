@@ -55,5 +55,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]) ?>
         </div>
+        <div class="box-header with-border">SEO uk</div>
+        <div class="box-body">
+            <?= DetailView::widget([
+                'model' => $brand,
+                'attributes' => [
+                    'meta.title_uk',
+                    'meta.description_uk',
+                    'meta.keywords_uk',
+                ],
+            ]) ?>
+        </div>
     </div>
 </div>

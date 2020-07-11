@@ -37,7 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
                     'id',
                     'title',
+                    'title_uk',
                     'slug',
+                    'slug_uk',
                     'created_at:datetime',
                     'updated_at:datetime',
                 ],
@@ -48,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box">
         <div class="box-header with-border">Контент</div>
         <div class="box-body">
-            <?= $page->content ?>
+            <?= Yii::$app->language == 'ru' ? $page->content : $page->content_uk ?>
         </div>
     </div>
 
@@ -59,8 +61,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'model' => $page,
                 'attributes' => [
                     'meta.title',
+                    'meta.title_uk',
                     'meta.description',
+                    'meta.description_uk',
                     'meta.keywords',
+                    'meta.keywords_uk',
                 ],
             ]) ?>
         </div>
