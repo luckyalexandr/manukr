@@ -8,7 +8,7 @@
 
 use yii\helpers\Url; ?>
 <a href="<?= Url::to(['/shop/cart/index']) ?>" class="basket-btn basket-btn_fixed-xs btn-4">
-    <span class="basket-btn__label"><i class="fas fa-shopping-cart"></i> Корзина</span>
+    <span class="basket-btn__label"><i class="fas fa-shopping-cart"></i> <?= Yii::t('app', 'Корзина') ?></span>
     <span class="basket-btn__counter">
         ( <?= $cart->getAmount() ?> )
     </span>

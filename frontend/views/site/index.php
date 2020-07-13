@@ -19,8 +19,8 @@ $this->title = 'Manufacture 17';
                     <img src="<?= Html::encode($slide->getThumbFileUrl('image', 'main')) ?>" alt="">
                     <?php if ($slide->title || $slide->text): ?>
                         <div class="slide-text-wrapper">
-                            <?= (!$slide->title) ? '' : '<h3>' . $slide->title . '</h3>'?>
-                            <?= (!$slide->text) ? '' : '<p>' . $slide->text . '</p>'?>
+                            <?= (!$slide->title) ? '' : '<h3>' . Yii::$app->language == 'ru' ? $slide->title : $slide->tite_uk . '</h3>'?>
+                            <?= (!$slide->text) ? '' : '<p>' . Yii::$app->language == 'ru' ? $slide->text : $slide->text_uk . '</p>'?>
                         </div>
                     <?php endif; ?>
                     <?= (!$slide->link) ? '' : '</a>'?>
@@ -31,7 +31,7 @@ $this->title = 'Manufacture 17';
 
     <section class="container site-main_newest">
 
-		<h2>Новинки</h2>
+		<h2><?= Yii::t('app', 'Новинки') ?></h2>
 
         <div class="products row">
 
@@ -40,7 +40,7 @@ $this->title = 'Manufacture 17';
         ]); ?>
 
             <div class="col-md-12 text-center button-group">
-                <a class="button" href="<?= Url::to('/shop/catalog/newest') ?>" data-method="post">Смотреть больше</a>
+                <a class="button" href="<?= Url::to('/shop/catalog/newest') ?>" data-method="post"><?= Yii::t('app', 'Смотреть больше') ?></a>
             </div>
 
         </div>
@@ -48,25 +48,25 @@ $this->title = 'Manufacture 17';
     </section>
 
     <section class="container site-main_text">
-        <h2>Наши преимущества</h2>
+        <h2><?= Yii::t('app', 'Наши преимущества') ?></h2>
 
         <div class="col-md-12">
             <div class="col-md-4">
                 <i class="fas fa-business-time"></i>
                 <p>
-                    Оперативная обработка заказа
+                    <?= Yii::t('app', 'Оперативная обработка заказа') ?>
                 </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-chart-line"></i>
                 <p>
-                    Гибкая система скидок
+                    <?= Yii::t('app', 'Гибкая система скидок') ?>
                 </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-hand-holding-usd"></i>
                 <p>
-                    Бонусы постоянным клиентам
+                    <?= Yii::t('app', 'Бонусы постоянным клиентам') ?>
                 </p>
             </div>
         </div>
@@ -76,7 +76,7 @@ $this->title = 'Manufacture 17';
 
     <section class="container site-main_top-rated">
 
-        <h2>Популярные товары</h2>
+        <h2><?= Yii::t('app', 'Популярные товары') ?></h2>
 
         <div class="products row">
 
@@ -85,7 +85,7 @@ $this->title = 'Manufacture 17';
         ]); ?>
 
             <div class="col-md-12 text-center button-group">
-                <a class="button" href="<?= Url::to('/shop/catalog') ?>" data-method="post">Смотреть больше</a>
+                <a class="button" href="<?= Url::to('/shop/catalog') ?>" data-method="post"><?= Yii::t('app', 'Смотреть больше') ?></a>
             </div>
 
         </div>
@@ -94,7 +94,7 @@ $this->title = 'Manufacture 17';
 
     <section class="container site-main_top-rated">
 
-        <h2>Распродажа</h2>
+        <h2><?= Yii::t('app', 'Распродажа') ?></h2>
 
         <div class="products row">
 
@@ -103,7 +103,7 @@ $this->title = 'Manufacture 17';
         ]); ?>
 
             <div class="col-md-12 text-center button-group">
-                <a class="button" href="<?= Url::to('/shop/catalog/sale') ?>" data-method="post">Смотреть больше</a>
+                <a class="button" href="<?= Url::to('/shop/catalog/sale') ?>" data-method="post"><?= Yii::t('app', 'Смотреть больше') ?></a>
             </div>
 
         </div>
