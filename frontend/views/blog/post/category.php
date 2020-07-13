@@ -12,14 +12,14 @@
 
 use yii\helpers\Html;
 
-$this->title = $category->title;
+$this->title = Yii::$app->language == 'ru' ? $category->title : $category->title_uk;
 
-$this->registerMetaTag(['name' =>'title', 'content' => $category->meta->title]);
-$this->registerMetaTag(['name' =>'description', 'content' => $category->meta->description]);
-$this->registerMetaTag(['name' =>'keywords', 'content' => $category->meta->keywords]);
+$this->registerMetaTag(['name' =>'title', 'content' => Yii::$app->language == 'ru' ? $category->meta->title : $category->meta->title_uk]);
+$this->registerMetaTag(['name' =>'description', 'content' => Yii::$app->language == 'ru' ? $category->meta->description : $category->meta->description_uk]);
+$this->registerMetaTag(['name' =>'keywords', 'content' => Yii::$app->language == 'ru' ? $category->meta->keywords : $category->meta->keywords_uk]);
 
-$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $category->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Блог'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::$app->language == 'ru' ? $category->name : $category->name_uk;
 
 $this->params['active_category'] = $category;
 ?>
@@ -29,7 +29,7 @@ $this->params['active_category'] = $category;
 <?php if (trim($category->description)): ?>
     <div class="panel panel-default">
         <div class="panel-body">
-            <?= Yii::$app->formatter->asNtext($category->description) ?>
+            <?= Yii::$app->formatter->asNtext(Yii::$app->language == 'ru' ? $category->description : $category->description_uk) ?>
         </div>
     </div>
 <?php endif; ?>

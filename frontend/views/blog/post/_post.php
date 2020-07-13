@@ -23,6 +23,6 @@ $url = Url::to(['post', 'id' =>$model->id]);
             </a>
         </div>
     <?php endif; ?>
-    <div class="h2"><a href="<?= Html::encode($url) ?>"><?= Html::encode($model->title) ?></a></div>
-    <p><?= Yii::$app->formatter->asNtext($model->description) ?></p>
+    <div class="h2"><a href="<?= Html::encode($url) ?>"><?= Html::encode(Yii::$app->language == 'ru' ? $model->title : $model->title_uk) ?></a></div>
+    <p><?= Yii::$app->formatter->asNtext(Yii::$app->language == 'ru' ? $model->description : $model->description_uk) ?></p>
 </div>

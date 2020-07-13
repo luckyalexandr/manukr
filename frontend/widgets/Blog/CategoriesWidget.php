@@ -12,6 +12,7 @@ use shop\entities\Blog\Category;
 use shop\fetching\Blog\CategoryFetchingRepository;
 use yii\base\Widget;
 use yii\helpers\Html;
+use Yii;
 
 class CategoriesWidget extends Widget
 {
@@ -31,7 +32,7 @@ class CategoriesWidget extends Widget
         return Html::tag('div', implode(PHP_EOL, array_map(function (Category $category) {
             $active = $this->active && ($this->active->id == $category->id);
             return Html::a(
-                Html::encode($category->name),
+                Html::encode(Yii::$app->language == 'ru' ? $category->name : $category->name_uk),
                 ['/blog/post/category', 'slug' => $category->slug],
                 ['class' => $active ? 'list-group-item active' : 'list-group-item']
             );

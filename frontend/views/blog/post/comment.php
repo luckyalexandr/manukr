@@ -13,17 +13,17 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = 'Комментарий';
+$this->title = Yii::t('blog', 'Комментарий');
 
-$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $post->category->name, 'url' => ['category', 'slug' => $post->category->slug]];
-$this->params['breadcrumbs'][] = ['label' => $post->title, 'url' => ['post', 'id' => $post->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Блог'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::$app->language == 'ru' ? $post->category->name : $post->category->name_uk, 'url' => ['category', 'slug' => $post->category->slug]];
+$this->params['breadcrumbs'][] = ['label' => Yii::$app->language == 'ru' ? $post->title : $post->title_uk, 'url' => ['post', 'id' => $post->id]];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['active_category'] = $post->category;
 ?>
 
-<h1><?= Html::encode($post->title) ?></h1>
+<h1><?= Html::encode(Yii::$app->language == 'ru' ? $post->title : $post->title_uk) ?></h1>
 
 <?php $form = ActiveForm::begin([
     'action' => ['comment', 'id' => $post->id],
@@ -33,7 +33,7 @@ $this->params['active_category'] = $post->category;
 <?= $form->field($model, 'text')->textarea(['rows' => 5]) ?>
 
 <div class="form-group">
-    <?= Html::submitButton('Отправить комментарий', ['class' => 'btn btn-4']) ?>
+    <?= Html::submitButton(Yii::t('blog', 'Отправить комментарий'), ['class' => 'btn btn-4']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>

@@ -12,15 +12,15 @@
 use frontend\widgets\Blog\CommentsWidget;
 use yii\helpers\Html;
 
-$this->title = $post->title;
+$this->title = Yii::$app->language == 'ru' ? $post->title : $post->title_uk;
 
-$this->registerMetaTag(['name' =>'title', 'content' => $post->meta->title]);
-$this->registerMetaTag(['name' =>'description', 'content' => $post->meta->description]);
-$this->registerMetaTag(['name' =>'keywords', 'content' => $post->meta->keywords]);
+$this->registerMetaTag(['name' =>'title', 'content' => Yii::$app->language == 'ru' ? $post->meta->title : $post->meta->title_uk]);
+$this->registerMetaTag(['name' =>'description', 'content' => Yii::$app->language == 'ru' ? $post->meta->description : $post->meta->description_uk]);
+$this->registerMetaTag(['name' =>'keywords', 'content' => Yii::$app->language == 'ru' ? $post->meta->keywords : $post->meta->keywords_uk]);
 
 $this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $post->category->name, 'url' => ['category', 'slug' => $post->category->slug]];
-$this->params['breadcrumbs'][] = $post->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::$app->language == 'ru' ? $post->category->name : $post->category->name_uk, 'url' => ['category', 'slug' => $post->category->slug]];
+$this->params['breadcrumbs'][] = Yii::$app->language == 'ru' ? $post->title : $post->title_uk;
 
 $this->params['active_category'] = $post->category;
 
@@ -31,7 +31,7 @@ foreach ($post->tags as $tag) {
 ?>
 
 <article class="blog-post">
-    <h1><?= Html::encode($post->title) ?></h1>
+    <h1><?= Html::encode(Yii::$app->language == 'ru' ? $post->title : $post->title_uk) ?></h1>
 
     <p class="post-data"><span class="glyphicon glyphicon-calendar"></span> <?= Yii::$app->formatter->asDatetime($post->created_at); ?></p>
 
@@ -39,10 +39,10 @@ foreach ($post->tags as $tag) {
         <figure class="post-image"><img src="<?= Html::encode($post->getThumbFileUrl('photo', 'origin')) ?>" alt="" class="img-responsive" /></figure>
     <?php endif; ?>
 
-    <div class="post-text"><?= $post->content ?></div>
+    <div class="post-text"><?= Yii::$app->language == 'ru' ? $post->content : $post->content_uk ?></div>
 </article>
 
-<p class="blog-post-tags">Теги: <?= implode(', ', $tagLinks) ?></p>
+<p class="blog-post-tags"><?= Yii::t('blog', 'Теги:') ?> <?= implode(', ', $tagLinks) ?></p>
 
 <?= CommentsWidget::widget([
     'post' => $post,

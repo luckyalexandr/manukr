@@ -17,7 +17,7 @@ use yii\helpers\Html;
 ?>
 
 <div id="comments" class="inner-bottom-xs">
-    <h2>Комментарии</h2>
+    <h2><?= Yii::t('blog', 'Комментарии') ?></h2>
     <?php foreach ($items as $item): ?>
         <?= $this->render('_comment', ['item' => $item]) ?>
     <?php endforeach; ?>
@@ -29,10 +29,10 @@ use yii\helpers\Html;
     ]); ?>
 
     <?= Html::activeHiddenInput($commentForm, 'parentId') ?>
-    <?= $form->field($commentForm, 'text')->textarea(['rows' => 5])->label('Текст комментария') ?>
+    <?= $form->field($commentForm, 'text')->textarea(['rows' => 5])->label(Yii::t('blog', 'Текст комментария')) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Отправить комментарий', ['class' => 'btn btn-4']) ?>
+        <?= Html::submitButton(Yii::t('blog', 'Отправить комментарий'), ['class' => 'btn btn-4']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

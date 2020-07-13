@@ -12,11 +12,11 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Блог';
+$this->title = Yii::t('blog', 'Блог');
 
-$this->registerMetaTag(['name' => 'title', 'content' => 'Блог']);
-$this->registerMetaTag(['name' => 'description', 'content' => 'Блог сайта Manufacture17']);
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'блог, статьи, статьи о тканях']);
+$this->registerMetaTag(['name' => 'title', 'content' => Yii::t('blog', 'Блог')]);
+$this->registerMetaTag(['name' => 'description', 'content' => Yii::t('blog', 'Блог сайта Manufacture17')]);
+$this->registerMetaTag(['name' => 'keywords', 'content' => Yii::t('blog', 'блог, статьи, статьи о тканях')]);
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -19,7 +19,7 @@ use frontend\widgets\Blog\CategoriesWidget;
         <?= $content ?>
     </div>
     <aside id="column-left" class="col-sm-3 hidden-xs">
-        <h3>Меню</h3>
+        <h3><?= Yii::t('blog', 'Меню') ?></h3>
         <?= CategoriesWidget::widget([
             'active' => $this->params['active_category'] ?? null
         ]) ?>

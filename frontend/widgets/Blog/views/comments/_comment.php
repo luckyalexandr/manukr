@@ -16,7 +16,7 @@
                 <?php if ($item->comment->isActive()): ?>
                     <?= Yii::$app->formatter->asNtext($item->comment->text) ?>
                 <?php else: ?>
-                    <i>Комментарий удален.</i>
+                    <i><?= Yii::t('blog', 'Комментарий удален.') ?></i>
                 <?php endif; ?>
             </p>
             <div>
@@ -24,7 +24,7 @@
                     <?= Yii::$app->formatter->asDatetime($item->comment->created_at) ?>
                 </div>
                 <div class="pull-right">
-                    <span class="comment-reply">Ответить</span>
+                    <span class="comment-reply"><?= Yii::t('blog', 'Ответить') ?></span>
                 </div>
             </div>
         </div>

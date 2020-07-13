@@ -12,13 +12,13 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Записи с тегом ' . $tag->name;
+$this->title = Yii::t('blog', 'Записи с тегом ') . Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk;
 
-$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $tag->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Блог'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk;
 ?>
 
-    <h1>Posts with tag &laquo;<?= Html::encode($tag->name) ?>&raquo;</h1>
+    <h1><?= Yii::t('blog', 'Записи с тегом '); ?>&laquo;<?= Html::encode(Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk) ?>&raquo;</h1>
 
 <?= $this->render('_list', [
     'dataProvider' => $dataProvider
