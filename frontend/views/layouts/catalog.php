@@ -18,7 +18,7 @@ use frontend\widgets\Shop\CategoriesWidget;
     <div class="row">
         <aside id="column-left" class="col-md-3 hidden-sm hidden-xs">
             <div class="column_catalog">
-                <h3>Каталог</h3>
+                <h3><?= Yii::t('app', 'Каталог') ?></h3>
                 <?= CategoriesWidget::widget([
                     'active' => $this->params['active_category'] ?? null
                 ]) ?>
