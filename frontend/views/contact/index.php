@@ -8,28 +8,28 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->registerMetaTag(['name' => 'title', 'content' => 'Контактная информация']);
-$this->registerMetaTag(['name' => 'description', 'content' => 'Контактная информация сайта Manufacture17']);
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'Manufacture17, контакты, контактная информация, обратная связь']);
+$this->registerMetaTag(['name' => 'title', 'content' => Yii::t('app', 'Контактная информация')]);
+$this->registerMetaTag(['name' => 'description', 'content' => Yii::t('app', 'Контактная информация сайта Manufacture17')]);
+$this->registerMetaTag(['name' => 'keywords', 'content' => Yii::t('app', 'Manufacture17, контакты, контактная информация, обратная связь')]);
 
-$this->title = 'Контакты';
+$this->title = Yii::t('app', 'Контакты');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container site-contact">
     <div class="col-md-6">
         <h2 class="page-title">
-            Контакты
+            <?= Yii::t('app', 'Контакты') ?>
         </h2>
         <div class="col-xs-12 page-content">
-            <h3>Наш адрес:</h3>
-            <p class="city-and-postcode">Днепр 49000</p>
-            <p class="street">ул. Вячеслава Липинского (бывш. Ширшова), 18</p>
+            <h3><?= Yii::t('app', 'Наш адрес:') ?></h3>
+            <p class="city-and-postcode"><?= Yii::t('app', 'Днепр 49000') ?></p>
+            <p class="street"><?= Yii::t('app', 'ул. Вячеслава Липинского (бывш. Ширшова), 18') ?></p>
 <!--             <h3>Our address:</h3>
             <p class="city-and-postcode">Dnipro 49027</p>
             <p class="street">Zhukovsky str. 18 / P.S.Studio</p> -->
 
-            <h3>Телефоны:</h3>
+            <h3><?= Yii::t('app', 'Телефоны:') ?></h3>
             <div class="footer-bottom_phones">
 
                 <p>
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-6">
 
         <h2 class="page-title">
-            Напишите нам:
+            <?= Yii::t('app', 'Напишите нам:') ?>
         </h2>
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton(Yii::t('app', 'Отправить'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
