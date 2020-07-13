@@ -51,6 +51,11 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'sourceMessageTable'=>'{{%source_message}}',
                     'messageTable'=>'{{%message}}',
+                ],
+                'cabinet' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable'=>'{{%source_message}}',
+                    'messageTable'=>'{{%message}}',
                 ]
             ],
         ],
