@@ -14,8 +14,8 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$this->title = 'Список желаний';
-$this->params['breadcrumbs'][] = ['label' => 'Кабинет', 'url' => ['cabinet/default/index']];
+$this->title = Yii::t('cabinet', 'Список желаний');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('cabinet', 'Кабинет'), 'url' => ['cabinet/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cabinet-wishlist">

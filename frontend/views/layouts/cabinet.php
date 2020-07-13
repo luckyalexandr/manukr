@@ -22,14 +22,14 @@ use yii\helpers\Url;
     <aside id="column-right" class="col-sm-3">
         <div class="list-group">
             <?php if (Yii::$app->user->isGuest): ?>
-            <a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>" class="list-group-item">Войти</a>
-            <a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>" class="list-group-item">Зарегистрироваться</a>
-                <a href="<?= Html::encode(Url::to(['/auth/reset/request'])) ?>" class="list-group-item">Забыли пароль?</a>
+            <a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Войти') ?></a>
+            <a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Зарегистрироваться') ?></a>
+                <a href="<?= Html::encode(Url::to(['/auth/reset/request'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Забыли пароль?') ?></a>
             <?php else: ?>
-            <a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>" class="list-group-item">Мой кабинет</a>
-            <a href="<?= Html::encode(Url::to(['/cabinet/wishlist/index'])) ?>" class="list-group-item">Список желаний</a>
-            <a href="<?= Html::encode(Url::to(['/cabinet/order/index'])) ?>" class="list-group-item">История заказов</a>
-            <a href="<?= Html::encode(Url::to(['/logout'])) ?>" class="list-group-item">Выход</a>
+            <a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Мой кабинет') ?></a>
+            <a href="<?= Html::encode(Url::to(['/cabinet/wishlist/index'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Список желаний') ?></a>
+            <a href="<?= Html::encode(Url::to(['/cabinet/order/index'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'История заказов') ?></a>
+            <a href="<?= Html::encode(Url::to(['/logout'])) ?>" class="list-group-item"><?= Yii::t('cabinet', 'Выход') ?></a>
             <?php endif; ?>
         </div>
     </aside>

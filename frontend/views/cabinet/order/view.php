@@ -15,9 +15,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $order shop\entities\Shop\Order\Order */
 
-$this->title = 'Заказ №' . $order->id;
-$this->params['breadcrumbs'][] = ['label' => 'Кабинет', 'url' => ['cabinet/default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'История заказов', 'url' => ['index']];
+$this->title = Yii::t('cabinet', 'Заказ №') . $order->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('cabinet', 'Кабинет'), 'url' => ['cabinet/default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('cabinet', 'История заказов'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-view">
@@ -57,11 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <table class="table table-bordered rwd-table" style="margin-bottom: 0">
             <thead>
             <tr>
-                <th class="text-left">Наименование</th>
-                <th class="text-left">Модель</th>
-                <th class="text-left">Количество</th>
-                <th class="text-right">Цена за единицу</th>
-                <th class="text-right">Итого</th>
+                <th class="text-left"><?= Yii::t('cabinet', 'Наименование') ?></th>
+                <th class="text-left"><?= Yii::t('cabinet', 'Модель') ?></th>
+                <th class="text-left"><?= Yii::t('cabinet', 'Количество') ?></th>
+                <th class="text-right"><?= Yii::t('cabinet', 'Цена за единицу') ?></th>
+                <th class="text-right"><?= Yii::t('cabinet', 'Итого') ?></th>
             </tr>
             </thead>
             <tbody>

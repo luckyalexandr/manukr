@@ -15,8 +15,8 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'История заказов';
-$this->params['breadcrumbs'][] = ['label' => 'Кабинет', 'url' => ['cabinet/default/index']];
+$this->title = Yii::t('cabinet', 'История заказов');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('cabinet', 'Кабинет'), 'url' => ['cabinet/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">

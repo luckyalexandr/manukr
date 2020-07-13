@@ -7,13 +7,13 @@
  */
 use  \yii\helpers\Html;
 
-$this->title = 'Личный кабинет';
+$this->title = Yii::t('cabinet', 'Личный кабинет');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cabinet-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <h2 style="text-align: center;">Добро пожаловать!</h2>
+    <h2 style="text-align: center;"><?= Yii::t('cabinet', 'Добро пожаловать!') ?></h2>
 
     <!--    <p>Прикрепить профиль соц. сетей</p>
     <?//= \yii\authclient\widgets\AuthChoice::widget([
