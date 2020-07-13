@@ -7,11 +7,11 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Вход';
+$this->title = Yii::t('login', 'Вход');
 
-$this->registerMetaTag(['name' => 'title', 'content' => 'Вход на сайт']);
-$this->registerMetaTag(['name' => 'description', 'content' => 'Страница авторизации сайта Manufacture17']);
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'вход, логин, авторизация']);
+$this->registerMetaTag(['name' => 'title', 'content' => Yii::t('login', 'Вход на сайт')]);
+$this->registerMetaTag(['name' => 'description', 'content' => Yii::t('login', 'Страница авторизации сайта Manufacture17')]);
+$this->registerMetaTag(['name' => 'keywords', 'content' => Yii::t('login', 'вход, логин, авторизация')]);
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -22,22 +22,22 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1 class="text-center"><?= Html::encode($this->title) ?></h1>
 
         <div class="col-md-6">
-            <p>Пожалуйста заполните поля входа:</p>
+            <p><?= Yii::t('login', 'Пожалуйста заполните поля входа:') ?></p>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Имя пользователя') ?>
+            <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label(Yii::t('login', 'Имя пользователя')) ?>
 
-            <?= $form->field($model, 'password')->passwordInput()->label('Пароль') ?>
+            <?= $form->field($model, 'password')->passwordInput()->label(Yii::t('login', 'Пароль')) ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox()->label('Запомнить меня') ?>
+            <?= $form->field($model, 'rememberMe')->checkbox()->label(Yii::t('login', 'Запомнить меня')) ?>
 
             <div style="color:#999; margin:1em 0">
-                Если вы забыли пароль вы можете <?= Html::a('восстановить его', ['/auth/reset/request']) ?>.
+                <?= Yii::t('login', 'Если вы забыли пароль вы можете') ?> <?= Html::a(Yii::t('login', 'восстановить его'), ['/auth/reset/request']) ?>.
             </div>
 
             <div class="form-group">
-                <?= Html::submitButton('Войти', ['class' => 'btn btn-4', 'name' => 'login-button']) ?>
+                <?= Html::submitButton(Yii::t('login', 'Войти'), ['class' => 'btn btn-4', 'name' => 'login-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
         <div class="col-md-12">
-            <p>Или <?= Html::a('зарегистрируйтесь', \yii\helpers\Url::to('/auth/signup/request')) ?></p>
+            <p><?= Yii::t('login', 'Или') ?> <?= Html::a(Yii::t('login', 'зарегистрируйтесь'), \yii\helpers\Url::to('/auth/signup/request')) ?></p>
         </div>
 
     </div>

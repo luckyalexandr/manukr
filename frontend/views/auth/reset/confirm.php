@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Подтверждение смены пароля';
+$this->title = Yii::t('login', 'Подтверждение смены пароля');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="cil-md-12">
             <h1><?= Html::encode($this->title) ?></h1>
             <br>
-            <p>Введите свой новый пароль для сайта Manufacture17:</p>
+            <p><?= Yii::t('login', 'Введите свой новый пароль для сайта Manufacture17:'); ?></p>
             <br>
             <hr>
         </div>
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-4']) ?>
+                    <?= Html::submitButton(Yii::t('login', 'Сохранить'), ['class' => 'btn btn-4']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

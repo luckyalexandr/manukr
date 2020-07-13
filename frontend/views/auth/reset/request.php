@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Восстановление пароля';
+$this->title = Yii::t('login', 'Восстановление пароля');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="сol-xs-12 auth-reset-request">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-12">
                 <h1><?= Html::encode($this->title) ?></h1>
                 <br>
-                <p>Пожалуйста введите свой email. На него будет отправлена ссылка для сброса пароля.</p>
+                <p><?= Yii::t('login', 'Пожалуйста введите свой email. На него будет отправлена ссылка для сброса пароля.') ?></p>
                 <br>
                 <hr>
             </div>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-4']) ?>
+                        <?= Html::submitButton(Yii::t('login', 'Отправить'), ['class' => 'btn btn-4']) ?>
                     </div>
 
                 <?php ActiveForm::end(); ?>
