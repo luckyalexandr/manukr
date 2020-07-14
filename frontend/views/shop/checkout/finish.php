@@ -13,9 +13,9 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Заказ принят';
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['/shop/catalog/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['/shop/cart/index']];
+$this->title = Yii::t('shop', 'Заказ принят');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['/shop/catalog/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Корзина'), 'url' => ['/shop/cart/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <h1><?= Html::encode($this->title) ?></h1>
 
-        <p><b>Благодарим за покупку. Ваш заказ обрабатывается.</b></p>
+        <p><b><?= Yii::t('shop', 'Благодарим за покупку. Ваш заказ обрабатывается.') ?></b></p>
 
     </div>
 </div>

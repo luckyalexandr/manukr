@@ -12,7 +12,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Каталог';
+$this->title = Yii::t('shop', 'Каталог');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

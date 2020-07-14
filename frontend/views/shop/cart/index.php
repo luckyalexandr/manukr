@@ -13,8 +13,8 @@ use shop\helpers\PriceHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Корзина';
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['/shop/catalog/index']];
+$this->title = Yii::t('shop', 'Корзина');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['/shop/catalog/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container cart-index">
@@ -24,12 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-xs-12">
         <table class="table table-bordered rwd-table">
             <tr>
-                <th class="text-center" style="width: 100px">Изображение</th>
-                <th class="text-left">Наименование</th>
-<!--                <th class="text-left">Модификация</th>-->
-                <th class="text-left">Количество</th>
-                <th class="text-right">Цена</th>
-                <th class="text-right">Итого</th>
+                <th class="text-center" style="width: 100px"><?= Yii::t('shop', 'Изображение') ?></th>
+                <th class="text-left"><?= Yii::t('shop', 'Наименование') ?></th>
+<!--                <th class="text-left">Модификация')</th>-->
+                <th class="text-left"><?= Yii::t('shop', 'Количество') ?></th>
+                <th class="text-right"><?= Yii::t('shop', 'Цена') ?></th>
+                <th class="text-right"><?= Yii::t('shop', 'Итого') ?></th>
             </tr>
             <?php foreach ($cart->getItems() as $item): ?>
                 <?php
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </a>
                     </td>
                     <td class="text-left">
-                        <a href="<?= $url ?>"><?= Html::encode($product->name) ?></a>
+                        <a href="<?= $url ?>"><?= Html::encode(Yii::$app->language == 'ru' ? $product->name : $product->name_uk) ?></a>
                     </td>
 <!--                    <td class="text-left">-->
 <!--                        <?php //if ($modification): ?>-->
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="cart-item-btn-group input-group btn-block" style="max-width: 200px;">
                             <input type="number" name="quantity" value="<?= $item->getQuantity() ?>" size="1" class="form-control" />
                             <span class="input-group-btn">
-                                    <button type="submit" title="" class="btn btn-primary" data-original-title="Update"><i class="fas fa-sync-alt""></i></button>
+                                    <button type="submit" title="" class="btn btn-primary" data-original-title="Update"><i class="fas fa-sync-alt"></i></button>
                                     <a title="Remove" class="btn btn-danger" href="<?= Url::to(['remove', 'id' => $item->getId()]) ?>" data-method="post"><i class="fa fa-times-circle"></i></a>
                                 </span>
                         </div>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $cost = $cart->getCost() ?>
             <table class="table table-bordered">
                 <tr>
-                    <td class="text-right"><strong>Под-итог:</strong></td>
+                    <td class="text-right"><strong><?= Yii::t('shop', 'Под-итог:') ?></strong></td>
                     <td class="text-right"><?= PriceHelper::format($cost->getOrigin()) ?> грн.</td>
                 </tr>
                 <?php foreach ($cost->getDiscounts() as $discount): ?>
@@ -87,19 +87,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                 <?php endforeach; ?>
                 <tr>
-                    <td class="text-right"><strong>Итого:</strong></td>
+                    <td class="text-right"><strong><?= Yii::t('shop', 'Итого:') ?></strong></td>
                     <td class="text-right"><?= PriceHelper::format($cost->getTotal()) ?> грн.</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="buttons clearfix">
-        <div class="pull-left"><a href="<?= Html::encode(Url::to('/shop/catalog/index')) ?>" class="btn btn-4">Продолжить покупки</a></div>
+        <div class="pull-left"><a href="<?= Html::encode(Url::to('/shop/catalog/index')) ?>" class="btn btn-4"><?= Yii::t('shop', 'Продолжить покупки') ?></a></div>
         <?php if ($cart->getItems()): ?>
         <?php if (Yii::$app->user->isGuest): ?>
-            <div class="pull-right"><a href="<?=Html::encode( Url::to('/shop/checkout/guest')) ?>" class="btn btn-4">Оформить заказ</a></div>
+            <div class="pull-right"><a href="<?=Html::encode( Url::to('/shop/checkout/guest')) ?>" class="btn btn-4"><?= Yii::t('shop', 'Оформить заказ') ?></a></div>
         <?php else: ?>
-            <div class="pull-right"><a href="<?=Html::encode( Url::to('/shop/checkout/index')) ?>" class="btn btn-4">Оформить заказ</a></div>
+            <div class="pull-right"><a href="<?=Html::encode( Url::to('/shop/checkout/index')) ?>" class="btn btn-4"><?= Yii::t('shop', 'Оформить заказ') ?></a></div>
         <?php endif; ?>
         <?php endif; ?>
     </div>

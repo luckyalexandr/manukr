@@ -14,6 +14,7 @@ use shop\fetching\Shop\CategoryFetchingRepository;
 use shop\fetching\Shop\views\CategoryView;
 use yii\base\Widget;
 use yii\helpers\Html;
+use Yii;
 
 class CategoriesWidget extends Widget
 {
@@ -48,7 +49,7 @@ class CategoriesWidget extends Widget
             $indent = ($view->category->depth > 1 ? str_repeat('&nbsp;&nbsp;&nbsp;', $view->category->depth - 1) . '- ' : '');
             $active = $this->active && ($this->active->id == $view->category->id || $this->active->isChildOf($view->category));
             return Html::a(
-                $indent . Html::encode($view->category->name)/** . ' (' . count(Product::find()->where(['category_id' => $view->category->id])->all()) . ')'**/,
+                $indent . Html::encode(Yii::$app->language == 'ru' ? $view->category->name : $view->category->name_uk)/** . ' (' . count(Product::find()->where(['category_id' => $view->category->id])->all()) . ')'**/,
                 ['/shop/catalog/category', 'id' => $view->category->id],
                 ['class' => $active ? 'list-group-item active' : 'list-group-item']
             );

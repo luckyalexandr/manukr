@@ -12,13 +12,13 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Товары с меткой ' . $tag->name;
+$this->title = Yii::t('shop', 'Товары с меткой ') . Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk;
 
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $tag->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk;
 ?>
 
-    <h1>Товары с меткой &laquo;<?= Html::encode($tag->name) ?>&raquo;</h1>
+    <h1><?= Yii::t('shop', 'Товары с меткой ') ?>&laquo;<?= Html::encode(Yii::$app->language == 'ru' ? $tag->name : $tag->name_uk) ?>&raquo;</h1>
 
     <hr />
 

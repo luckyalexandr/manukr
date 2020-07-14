@@ -14,6 +14,7 @@ use shop\entities\behaviors\MetaBehavior;
 use shop\entities\Meta;
 use shop\entities\Shop\queries\CategoryQuery;
 use yii\db\ActiveRecord;
+use Yii;
 
 /**
  * Class Category

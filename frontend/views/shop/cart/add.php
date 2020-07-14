@@ -11,9 +11,9 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Добавить';
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['/shop/catalog/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['index']];
+$this->title = Yii::t('shop', 'Добавить');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['/shop/catalog/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Корзина'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -25,13 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin() ?>
 
             <?php if ($modifications = $model->modificationsList()): ?>
-                <?= $form->field($model, 'modification')->dropDownList($modifications, ['prompt' => '--- Выбрать ---']) ?>
+                <?= $form->field($model, 'modification')->dropDownList($modifications, ['prompt' => Yii::t('shop', '--- Выбрать ---')]) ?>
             <?php endif; ?>
 
             <?= $form->field($model, 'quantity')->textInput(['type' => 'number']) ?>
 
             <div class="form-group">
-                <?= Html::submitButton('В корзину', ['class' => 'btn btn-4']) ?>
+                <?= Html::submitButton(Yii::t('shop', 'В корзину'), ['class' => 'btn btn-4']) ?>
             </div>
 
             <?php ActiveForm::end() ?>

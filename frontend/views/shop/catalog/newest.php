@@ -8,13 +8,13 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Новинки';
+$this->title = Yii::t('shop', 'Новинки');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <section class="shop-catalog_newest">
 
-    <h1>Новинки</h1>
+    <h1><?= Yii::t('shop', 'Новинки') ?></h1>
 
     <div class="products row">
         <div class="col-md-12 hiddem-sm">

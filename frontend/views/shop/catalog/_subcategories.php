@@ -16,7 +16,7 @@ use yii\helpers\Url;
     <div class="panel panel-default">
         <div class="panel-body">
             <?php foreach ($category->children as $child): ?>
-                <a href="<?= Html::encode(Url::to(['/shop/catalog/category', 'id' => $child->id])) ?>"><?= Html::encode($child->name) ?></a> &nbsp;
+                <a href="<?= Html::encode(Url::to(['/shop/catalog/category', 'id' => $child->id])) ?>"><?= Html::encode(Yii::$app->language == 'ru' ? $child->name : $child->name_uk) ?></a> &nbsp;
             <?php endforeach; ?>
         </div>
     </div>

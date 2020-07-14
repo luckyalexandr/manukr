@@ -33,31 +33,25 @@ class Characteristic extends ActiveRecord
 
     public $variants;
 
-    public static function create($name, $name_uk, $type, $required, $default, $default_uk, array $variants, array $variants_uk, $sort): self
+    public static function create($name, $type, $required, $default, array $variants, $sort): self
     {
         $object = new static();
         $object->name = $name;
-        $object->name_uk = $name_uk;
         $object->type = $type;
         $object->required = $required;
         $object->default = $default;
-        $object->default_uk = $default_uk;
         $object->variants = $variants;
-        $object->variants_uk = $variants_uk;
         $object->sort = $sort;
         return $object;
     }
 
-    public function edit($name, $name_uk, $type, $required, $default, $default_uk, array $variants, array $variants_uk, $sort): void
+    public function edit($name, $type, $required, $default, array $variants, $sort): void
     {
         $this->name = $name;
-        $this->name_uk = $name_uk;
         $this->type = $type;
         $this->required = $required;
         $this->default = $default;
-        $this->default_uk = $default_uk;
         $this->variants = $variants;
-        $this->variants_uk = $variants_uk;
         $this->sort = $sort;
     }
 
@@ -103,14 +97,12 @@ class Characteristic extends ActiveRecord
     public function afterFind(): void
     {
         $this->variants = Json::decode($this->getAttribute('variants_json'));
-        $this->variants_uk = Json::decode($this->getAttribute('variants_uk_json'));
         parent::afterFind();
     }
 
     public function beforeSave($insert): bool
     {
         $this->setAttribute('variants_json', Json::encode($this->variants));
-        $this->setAttribute('variants_uk_json', Json::encode($this->variants_uk));
         return parent::beforeSave($insert);
     }
 }

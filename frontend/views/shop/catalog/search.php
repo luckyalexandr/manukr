@@ -13,7 +13,7 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = 'Поиск';
+$this->title = Yii::t('shop', 'Поиск');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -26,17 +26,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="row">
             <div class="col-md-4">
-                <?= $form->field($searchForm, 'text')->textInput()->label('Наименование') ?>
+                <?= $form->field($searchForm, 'text')->textInput()->label(Yii::t('shop', 'Наименование')) ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($searchForm, 'category')->dropDownList($searchForm->categoriesList(), ['prompt' => 'Выбрать категорию'])->label('Категория') ?>
+                <?= $form->field($searchForm, 'category')->dropDownList($searchForm->categoriesList(), ['prompt' => Yii::t('shop', 'Выбрать категорию')])->label(Yii::t('shop', 'Категория')) ?>
             </div>
             <div class="col-md-4">
-                <?= $form->field($searchForm, 'brand')->dropDownList($searchForm->brandsList(), ['prompt' => 'Выбрать Бренд'])->label('Бренд') ?>
+                <?= $form->field($searchForm, 'brand')->dropDownList($searchForm->brandsList(), ['prompt' => Yii::t('shop', 'Выбрать Бренд')])->label(Yii::t('shop', 'Бренд')) ?>
             </div>
         </div>
 <h2>
-    Характеристики
+    <?= Yii::t('shop', 'Характеристики') ?>
 </h2>
         <?php foreach ($searchForm->values as $i => $value): ?>
             <div class="row">
@@ -60,10 +60,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="row">
             <div class="col-md-6">
-                <?= Html::submitButton('Искать', ['class' => 'btn btn-4 btn-lg btn-block']) ?>
+                <?= Html::submitButton(Yii::t('shop', 'Искать'), ['class' => 'btn btn-4 btn-lg btn-block']) ?>
             </div>
             <div class="col-md-6">
-                <?= Html::a('Очистить', [''], ['class' => 'btn btn-4 btn-lg btn-block']) ?>
+                <?= Html::a(Yii::t('shop', 'Очистить'), [''], ['class' => 'btn btn-4 btn-lg btn-block']) ?>
             </div>
         </div>
 

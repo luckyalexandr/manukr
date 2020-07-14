@@ -37,11 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="table-responsive">
             <table class="table table-bordered rwd-table">
                 <tr>
-                    <th class="text-left">Наименование</th>
-                    <th class="text-left">Модель</th>
-                    <th class="text-left">Количество</th>
-                    <th class="text-right">Цена за 1 м.</th>
-                    <th class="text-right">Итого</th>
+                    <th class="text-left"><?= Yii::t('shop', 'Наименование') ?></th>
+                    <th class="text-left"><?= Yii::t('shop', 'Модель') ?></th>
+                    <th class="text-left"><?= Yii::t('shop', 'Количество') ?></th>
+                    <th class="text-right"><?= Yii::t('shop', 'Цена за 1 м.') ?></th>
+                    <th class="text-right"><?= Yii::t('shop', 'Итого') ?></th>
                 </tr>
                 <?php foreach ($cart->getItems() as $item): ?>
                     <?php
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ?>
                     <tr>
                         <td class="text-left">
-                            <a href="<?= $url ?>"><?= Html::encode($product->name) ?></a>
+                            <a href="<?= $url ?>"><?= Html::encode(Yii::$app->language == 'ru' ? $product->name : $product->name_uk) ?></a>
                         </td>
                         <td data-th="Модель:" class="text-left">
                             <?php if ($modification): ?>
@@ -73,11 +73,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $cost = $cart->getCost() ?>
         <table class="table table-bordered">
             <tr>
-                <td class="text-right"><strong>Подитог:</strong></td>
+                <td class="text-right"><strong><?= Yii::t('shop', 'Подитог:') ?></strong></td>
                 <td class="text-right"><?= PriceHelper::format($cost->getOrigin()) ?> грн.</td>
             </tr>
             <tr>
-                <td class="text-right"><strong>Итого:</strong></td>
+                <td class="text-right"><strong><?= Yii::t('shop', 'Итого:') ?></strong></td>
                 <td class="text-right"><?= PriceHelper::format($cost->getTotal()) ?> грн.</td>
             </tr>
         </table>
@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php $form = ActiveForm::begin() ?>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Данные получателя</div>
+            <div class="panel-heading"><?= Yii::t('shop', 'Данные получателя') ?></div>
             <div class="panel-body">
                 <?= $form->field($model->customer, 'phone')->widget(MaskedInput::class, [
                     'mask' => '+38 (999) 999-99-99',
@@ -99,25 +99,25 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Информация о доставке</div>
+            <div class="panel-heading"><?= Yii::t('shop', 'Информация о доставке') ?></div>
             <div class="panel-body">
                 <div class="sber">
                     <p class="sber-requisites">
                         <strong>
-                            Реквизиты для оплаты
+                            <?= Yii::t('shop', 'Реквизиты для оплаты') ?>
                         </strong>
                     </p>
-                    <p><strong>МФО</strong> 305482</p>
-                    <p><strong>ИНН</strong> 3220303487</p>
-                    <p><strong>Счет</strong> UA493054820000026009500736774</p>
-                    <p>Поляруш Дарина Валериевна.</p>
+                    <p><strong><?= Yii::t('shop', 'МФО') ?></strong> 305482</p>
+                    <p><strong><?= Yii::t('shop', 'ИНН') ?></strong> 3220303487</p>
+                    <p><strong><?= Yii::t('shop', 'Счет') ?></strong> UA493054820000026009500736774</p>
+                    <p><?= Yii::t('shop', 'Поляруш Дарина Валериевна.') ?></p>
                 </div>
-                <?= $form->field($model->delivery, 'method')->dropDownList($model->delivery->deliveryMethodsList(), ['prompt' => '--- Выбрать метод доставки ---', 'required' => true])->label('Способ доставки') ?>
-                <?= $form->field($model->delivery, 'address')->textarea(['rows' => 3])->label('Адрес') ?>
+                <?= $form->field($model->delivery, 'method')->dropDownList($model->delivery->deliveryMethodsList(), ['prompt' => Yii::t('shop', '--- Выбрать метод доставки ---'), 'required' => true])->label(Yii::t('shop', 'Способ доставки')) ?>
+                <?= $form->field($model->delivery, 'address')->textarea(['rows' => 3])->label(Yii::t('shop', 'Адрес')) ?>
 
                 <?= $form->field($model->delivery, 'area')->dropDownList(ArrayHelper::getColumn($model->delivery->getAreas(), 'Description'),
                     [
-                        'prompt' => 'Выберите область',
+                        'prompt' => Yii::t('shop', 'Выберите область'),
                         'onchange' => '
                         $.post(
                             "'.Url::toRoute('cities').'",
@@ -131,7 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model->delivery, 'city')->dropDownList([],
                     [
-                        'prompt' => 'Сначала выберите область',
+                        'prompt' => Yii::t('shop', 'Сначала выберите область'),
                         'area' => 'area',
                         'onchange' => '
                         $.post(
@@ -147,7 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model->delivery, 'warehouse')->dropDownList(array(),
                     [
-                        'prompt' => 'Сначала выберите город',
+                        'prompt' => Yii::t('shop', 'Сначала выберите город'),
                         'city' => 'city',
                         'disabled' => 'disabled'
                     ]); ?>
@@ -156,14 +156,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading">Примечание к заказу</div>
+            <div class="panel-heading"><?= Yii::t('shop', 'Примечание к заказу') ?></div>
             <div class="panel-body">
                 <?= $form->field($model, 'note')->textarea(['rows' => 3])->label(false) ?>
             </div>
         </div>
 
         <div class="form-group">
-            <?= Html::submitButton('Подтвердить', ['class' => 'btn btn-4']) ?>
+            <?= Html::submitButton(Yii::t('shop', 'Подтвердить'), ['class' => 'btn btn-4']) ?>
         </div>
 
         <?php ActiveForm::end() ?>

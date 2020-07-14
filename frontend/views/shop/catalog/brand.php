@@ -14,11 +14,11 @@ use yii\helpers\Html;
 
 $this->title = $brand->name;
 
-$this->registerMetaTag(['name' =>'title', 'content' => $brand->meta->title]);
-$this->registerMetaTag(['name' =>'description', 'content' => $brand->meta->description]);
-$this->registerMetaTag(['name' =>'keywords', 'content' => $brand->meta->keywords]);
+$this->registerMetaTag(['name' =>'title', 'content' => Yii::$app->language == 'ru' ? $brand->meta->title : $brand->meta->title_uk]);
+$this->registerMetaTag(['name' =>'description', 'content' => Yii::$app->language == 'ru' ? $brand->meta->description : $brand->meta->description_uk]);
+$this->registerMetaTag(['name' =>'keywords', 'content' => Yii::$app->language == 'ru' ? $brand->meta->keywords : $brand->meta->keywords_uk]);
 
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $brand->name;
 ?>
 

@@ -15,21 +15,21 @@ use yii\widgets\LinkPager;
 ?>
 <div class="row">
     <div class="col-md-5 hiddem-sm">
-        <div class="text-left total-show">Показано <?= $dataProvider->getCount() ?> из <?= $dataProvider->getTotalCount() ?></div>
+        <div class="text-left total-show"><?= Yii::t('shop', 'Показано') ?> <?= $dataProvider->getCount() ?> <?= Yii::t('shop', 'из') ?> <?= $dataProvider->getTotalCount() ?></div>
     </div>
     <div class="col-md-4 col-xs-12">
         <div class="form-group input-group input-group-sm">
-            <label class="input-group-addon" for="input-sort">Сортировать по:</label>
+            <label class="input-group-addon" for="input-sort"><?= Yii::t('shop', 'Сортировать по:') ?></label>
             <select id="input-sort" class="form-control" onchange="location = this.value;">
                 <?php
                 $values = [
-                    '' => 'По умолчанию',
-                    'name' => 'Наименованию (А - Я)',
-                    '-name' => 'Наименованию (Я - А)',
-                    'price' => 'По возрастанию цены',
-                    '-price' => 'По убыванию цены',
-                    '-rating' => 'Рейтингу (высокий)',
-                    'rating' => 'Рейтингу (низкий)',
+                    '' => Yii::t('shop', 'По умолчанию'),
+                    'name' => Yii::t('shop', 'Наименованию (А - Я)'),
+                    '-name' => Yii::t('shop', 'Наименованию (Я - А)'),
+                    'price' => Yii::t('shop', 'По возрастанию цены'),
+                    '-price' => Yii::t('shop', 'По убыванию цены'),
+                    '-rating' => Yii::t('shop', 'Рейтингу (высокий)'),
+                    'rating' => Yii::t('shop', 'Рейтингу (низкий)'),
                 ];
                 $current = Yii::$app->request->get('sort');
                 ?>
@@ -41,7 +41,7 @@ use yii\widgets\LinkPager;
     </div>
     <div class="col-md-3 col-xs-12">
         <div class="form-group input-group input-group-sm">
-            <label class="input-group-addon" for="input-limit">Отобразить:</label>
+            <label class="input-group-addon" for="input-limit"><?= Yii::t('shop', 'Отобразить:') ?></label>
             <select id="input-limit" class="form-control" onchange="location = this.value;">
                 <?php
                 $values = [15, 25, 50, 75, 100];
