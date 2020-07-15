@@ -23,36 +23,36 @@ class ProductFetchingRepository
 {
     public function count(): int
     {
-        return Product::find()->where('main_photo_id >= 1')->andWhere(['status' => 1])->active()->count();
+        return Product::find()->where('main_photo_id >= 1')->andWhere(['status' => 1])->andWhere('quantity > 0')->active()->count();
     }
 
     public function getAllByRange(int $offset, int $limit): array
     {
-        return Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->andWhere(['status' => 1])->orderBy(['id' => SORT_ASC])->limit($limit)->offset($offset)->all();
+        return Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->andWhere('quantity > 0')->andWhere(['status' => 1])->orderBy(['id' => SORT_ASC])->limit($limit)->offset($offset)->all();
     }
 
     public function getAll(): DataProviderInterface
     {
-        $query = Product::find()->where('main_photo_id >= 1')->andWhere(['status' => 1])->alias('p')->active('p')->with('mainPhoto');
+        $query = Product::find()->where('main_photo_id >= 1')->andWhere('quantity > 0')->andWhere(['status' => 1])->alias('p')->active('p')->with('mainPhoto');
         return $this->getProvider($query);
     }
 
     public function getSale(): DataProviderInterface
     {
-        $query = Product::find()->where('main_photo_id >= 1')->andWhere('price_old >= 1')->andWhere(['status' => 1])->alias('p')->active('p')->with('mainPhoto');
+        $query = Product::find()->where('main_photo_id >= 1')->andWhere('quantity > 0')->andWhere('price_old >= 1')->andWhere(['status' => 1])->alias('p')->active('p')->with('mainPhoto');
         return $this->getProvider($query);
     }
 
     public function getNewestP(): DataProviderInterface
     {
-        $query = Product::find()->alias('p')->where('main_photo_id >= 1')->limit(24)->with('mainPhoto')->andWhere(['status' => 1])->orderBy(['id' => SORT_DESC]);
+        $query = Product::find()->alias('p')->where('main_photo_id >= 1')->limit(24)->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1])->orderBy(['id' => SORT_DESC]);
 
         return $this->getProvider($query);
     }
 
     public function getAllByCategory(Category $category): DataProviderInterface
     {
-        $query = Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->with('mainPhoto', 'category')->andWhere(['status' => 1]);
+        $query = Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->with('mainPhoto', 'category')->andWhere('quantity > 0')->andWhere(['status' => 1]);
         $ids = ArrayHelper::merge([$category->id], $category->getLeaves()->select('id')->column());
         $query->joinWith(['categoryAssignments ca'], false);
         $query->andWhere(['or', ['p.category_id' => $ids], ['ca.category_id' => $ids]]);
@@ -62,14 +62,14 @@ class ProductFetchingRepository
 
     public function getAllByBrand(Brand $brand): DataProviderInterface
     {
-        $query = Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->with('mainPhoto')->where('main_photo_id >= 1')->andWhere(['status' => 1]);
+        $query = Product::find()->where('main_photo_id >= 1')->alias('p')->active('p')->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1]);
         $query->andWhere(['p.brand_id' => $brand->id]);
         return $this->getProvider($query);
     }
 
     public function getAllByTag(Tag $tag): DataProviderInterface
     {
-        $query = Product::find()->alias('p')->active('p')->with('mainPhoto')->andWhere(['status' => 1])->where('main_photo_id >= 1');
+        $query = Product::find()->alias('p')->active('p')->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1])->where('main_photo_id >= 1');
         $query->joinWith(['tagAssignments ta'], false);
         $query->andWhere(['ta.tag_id' => $tag->id]);
         $query->groupBy('p.id');
@@ -78,17 +78,17 @@ class ProductFetchingRepository
 
     public function getFeatured($limit): array
     {
-        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere(['status' => 1])->orderBy(['rating' => SORT_DESC])->limit($limit)->all();
+        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1])->orderBy(['rating' => SORT_DESC])->limit($limit)->all();
     }
 
     public function getNewest($limit): array
     {
-        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere(['status' => 1])->orderBy(['id' => SORT_DESC])->limit($limit)->all();
+        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1])->orderBy(['id' => SORT_DESC])->limit($limit)->all();
     }
 
     public function getMainSale($limit): array
     {
-        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere(['status' => 1])->andWhere('price_old >= 1')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
+        return Product::find()->where('main_photo_id >= 1')->with('mainPhoto')->andWhere('quantity > 0')->andWhere(['status' => 1])->andWhere('price_old >= 1')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
     }
 
     public function find($id)
@@ -98,7 +98,7 @@ class ProductFetchingRepository
 
     public function findBySlug($slug)
     {
-        return Product::find()->andWhere(['slug' => $slug])->andWhere(['status' => 1])->one();
+        return Product::find()->andWhere(['slug' => $slug])->andWhere('quantity > 0')->andWhere(['status' => 1])->one();
     }
 
     private function getProvider(ActiveQuery $query): ActiveDataProvider
@@ -134,7 +134,7 @@ class ProductFetchingRepository
 
     public function search(SearchForm $form): DataProviderInterface
     {
-        $query = Product::find()->alias('p')->where('main_photo_id >= 1')->active('p')->with(['mainPhoto', 'category', 'brand']);
+        $query = Product::find()->alias('p')->where('main_photo_id >= 1')->andWhere('quantity > 0')->active('p')->with(['mainPhoto', 'category', 'brand']);
 
         if ($form->brand) {
             if ($brand = Brand::findOne($form->brand))
@@ -215,7 +215,7 @@ class ProductFetchingRepository
 
     public function getRecommended($quantity, $category)
     {
-        $products = Product::find()->where(['status' => 1])->andWhere(['category_id' => $category])->orderBy('RAND()')->limit($quantity)->all();
+        $products = Product::find()->where(['status' => 1])->andWhere('quantity > 0')->andWhere(['category_id' => $category])->orderBy('RAND()')->limit($quantity)->all();
         return $products;
     }
 }
