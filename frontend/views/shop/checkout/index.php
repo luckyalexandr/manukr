@@ -21,9 +21,9 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\MaskedInput;
 
-$this->title = 'Оформление заказа';
-$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['/shop/catalog/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['/shop/cart/index']];
+$this->title = Yii::t('shop', 'Оформление заказа');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Каталог'), 'url' => ['/shop/catalog/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('shop', 'Корзина'), 'url' => ['/shop/cart/index']];
 $this->params['breadcrumbs'][] = $this->title;
 //var_dump($model->delivery->getNp());die();
 ?>
@@ -92,9 +92,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options' => [
                         'class' => 'form-control placeholder-style',
                     ],
-                ])->label('Телефон') ?>
-                <?= $form->field($model->customer, 'name')->textInput()->label('ФИО') ?>
-                <?= $form->field($model->customer, 'email')->textInput()->label('Email') ?>
+                ])->label(Yii::t('shop', 'Телефон')) ?>
+                <?= $form->field($model->customer, 'name')->textInput()->label(Yii::t('shop', 'ФИО')) ?>
+                <?= $form->field($model->customer, 'email')->textInput()->label(Yii::t('shop', 'Email')) ?>
             </div>
         </div>
 

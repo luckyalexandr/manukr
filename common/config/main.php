@@ -33,34 +33,52 @@ return [
                     ]
                 ],
                 'app' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ]
                 ],
                 'login' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'login' => 'login.php',
+                    ]
                 ],
                 'models' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'models' => 'models.php',
+                    ]
                 ],
                 'blog' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'blog' => 'blog.php',
+                    ]
                 ],
                 'cabinet' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'cabinet' => 'cabinet.php',
+                    ]
                 ],
                 'shop' => [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%source_message}}',
-                    'messageTable'=>'{{%message}}',
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@common/messages',
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        'shop' => 'shop.php',
+                    ]
                 ]
             ],
         ],

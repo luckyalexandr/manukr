@@ -18,7 +18,7 @@ $this->registerMetaTag(['name' =>'title', 'content' => Yii::$app->language == 'r
 $this->registerMetaTag(['name' =>'description', 'content' => Yii::$app->language == 'ru' ? $post->meta->description : $post->meta->description_uk]);
 $this->registerMetaTag(['name' =>'keywords', 'content' => Yii::$app->language == 'ru' ? $post->meta->keywords : $post->meta->keywords_uk]);
 
-$this->params['breadcrumbs'][] = ['label' => 'Блог', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('blog', 'Блог'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => Yii::$app->language == 'ru' ? $post->category->name : $post->category->name_uk, 'url' => ['category', 'slug' => $post->category->slug]];
 $this->params['breadcrumbs'][] = Yii::$app->language == 'ru' ? $post->title : $post->title_uk;
 
