@@ -1,7 +1,7 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'language' => 'ru-RU',
+    'language' => 'ru',
     'sourceLanguage' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',

@@ -6,14 +6,14 @@
  * Time: 13:42
  */
 return [
-//    'class' => 'yii\web\UrlManager',
-    'class' => 'codemix\localeurls\UrlManager',
+   'class' => 'yii\web\UrlManager',
+    // 'class' => 'codemix\localeurls\UrlManager',
     'hostInfo' => $params['frontendHostInfo'],
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'cache' => false,
-    'languages' => ['uk', 'ru'],
-    'enableDefaultLanguageUrlCode' => true,
+    // 'languages' => ['uk', 'ru'],
+    // 'enableDefaultLanguageUrlCode' => true,
     'rules' => [
         '' => 'site/index',
         'contact' => 'contact/index',
